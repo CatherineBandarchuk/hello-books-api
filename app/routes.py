@@ -27,12 +27,18 @@ def get_list_of_books():
 
 @books_bp.route("/<book_id>", methods = ["GET"])
 def handle_book(book_id):
-    book_id = int(book_id)
+    try:
+        book_id = int(book_id)
+    except:
+        return {"message":f"book {book_id} invalid"}, 400
+
     for book in books:
         if book.id == book_id:
             return {
                 "id": book.id,
                 "title": book.title,
-                "description": book.description}
+                "description": book.description
+                }
+                
     return {"message":f"book {book_id} not found"}, 404
     
