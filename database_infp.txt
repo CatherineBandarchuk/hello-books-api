@@ -1,0 +1,7 @@
+ id |        title         |      description       |     Author_id
+----+----------------------+------------------------------------------
+  1 | Happy Life           | Just live it           | 
+  2 | In Need Of Sleep     | Work                   |
+  3 | How To Stop The Time | Fantasy Of Our Life    |
+  4 | I'm learning         | It's exciting process. |
+  6 | Happy Person         | Just me                |
