@@ -9,7 +9,7 @@ authors_bp = Blueprint("authors_bp", __name__, url_prefix="/authors")
 @authors_bp.route("", methods=["POST"])
 def create_author():
     request_body = request.get_json()
-    new_author = Author(name=request_body["name"],)
+    new_author = Author(name=request_body["name"])
 
     db.session.add(new_author)
     db.session.commit()
@@ -25,6 +25,7 @@ def read_all_authors():
     for author in authors:
         authors_response.append(
             {
+                "id": author.id,
                 "name": author.name
             }
         )

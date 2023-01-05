@@ -1,5 +1,6 @@
 from app import db
 from app.models.book import Book
+from app.models.author import Author
 from flask import Blueprint, jsonify, abort, make_response, request
 
 books_bp = Blueprint("books_bp", __name__, url_prefix="/books")
@@ -17,15 +18,18 @@ def validate_model(cls, model_id):
 
     return model
 
-@books_bp.route("", methods=["POST"])
-def create_book():
-    request_body = request.get_json()
-    new_book = Book.from_dict(request_body)
+# @books_bp.route("", methods=["POST"])
+# def create_book():
 
-    db.session.add(new_book)
-    db.session.commit()
+#     request_body = request.get_json()
+#     new_book = Book(
+#         title = request_body["title"],
+#         description = request_body["description"],
+#     )
 
-    return make_response(jsonify(f"Book {new_book.title} successfully created"), 201)
+#     db.session.add(new_book)
+#     db.session.commit()
+#     return make_response(jsonify(f"Book {new_book.title} successfully created"), 201)
 
 @books_bp.route("", methods=["GET"])
 def read_all_books():
